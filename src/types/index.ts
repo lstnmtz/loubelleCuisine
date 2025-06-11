@@ -1,4 +1,3 @@
-
 export interface Ingredient {
   nom: string;
   quantite: number;
@@ -17,6 +16,8 @@ export interface Recipe {
   tempsPreparation: number;
   tempsCuisson: number;
   createdAt?: Date;
+  caloriesParPersonne: number;
+  macrosParPersonne: { proteines: number; glucides: number; lipides: number };
 }
 
 export interface PlanningDay {

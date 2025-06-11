@@ -100,4 +100,8 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  body.dark {
+    @apply bg-[#18181b] text-[#fafafa];
+  }
 }

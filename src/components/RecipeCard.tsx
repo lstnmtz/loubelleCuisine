@@ -1,19 +1,20 @@
-
 import { Recipe } from '../types';
 import { Clock, Users } from 'lucide-react';
 import { Card, CardContent, CardFooter } from './ui/card';
 import { Badge } from './ui/badge';
+import { useNavigate } from "react-router-dom";
 
 interface RecipeCardProps {
   recipe: Recipe;
   onClick?: () => void;
 }
 
-const RecipeCard = ({ recipe, onClick }: RecipeCardProps) => {
+const RecipeCard = ({ recipe }: RecipeCardProps) => {
+  const navigate = useNavigate();
   return (
-    <Card 
+    <Card
       className="cursor-pointer hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
-      onClick={onClick}
+      onClick={() => navigate(`/recette/${recipe.id}`)}
     >
       <div className="aspect-video relative overflow-hidden rounded-t-lg">
         <img

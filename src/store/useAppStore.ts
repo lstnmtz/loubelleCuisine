@@ -1,6 +1,6 @@
-
 import { create } from 'zustand';
 import { Recipe, WeeklyPlan, ShoppingListItem, NavigationTab } from '../types';
+import recipesData from '../data/recipes'; // <-- Import des recettes
 
 interface AppState {
   // Navigation
@@ -27,45 +27,9 @@ const useAppStore = create<AppState>((set, get) => ({
   // Navigation
   activeTab: 'recettes',
   setActiveTab: (tab) => set({ activeTab: tab }),
-  
+
   // Recettes
-  recipes: [
-    {
-      id: '1',
-      titre: 'Crêpes Bretonnes',
-      image: 'https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500',
-      personnes: 4,
-      ingredients: [
-        { nom: 'Farine', quantite: 200, unite: 'g' },
-        { nom: 'Lait', quantite: 300, unite: 'ml' },
-        { nom: 'Oeufs', quantite: 2, unite: 'pièces' },
-        { nom: 'Beurre fondu', quantite: 30, unite: 'g' }
-      ],
-      instructions: 'Mélanger la farine et les œufs. Ajouter progressivement le lait puis le beurre fondu. Laisser reposer 1h. Cuire dans une poêle chaude.',
-      categorie: 'Petit-déjeuner',
-      tags: ['rapide', 'traditionnel'],
-      tempsPreparation: 15,
-      tempsCuisson: 20
-    },
-    {
-      id: '2',
-      titre: 'Salade de Quinoa',
-      image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500',
-      personnes: 2,
-      ingredients: [
-        { nom: 'Quinoa', quantite: 150, unite: 'g' },
-        { nom: 'Concombre', quantite: 1, unite: 'pièce' },
-        { nom: 'Tomates cerises', quantite: 200, unite: 'g' },
-        { nom: 'Avocat', quantite: 1, unite: 'pièce' }
-      ],
-      instructions: 'Cuire le quinoa selon les instructions. Couper les légumes en dés. Mélanger le tout avec une vinaigrette à l\'huile d\'olive.',
-      categorie: 'Déjeuner',
-      tags: ['végétarien', 'healthy'],
-      tempsPreparation: 15,
-      tempsCuisson: 15
-    }
-  ],
-  
+  recipes: recipesData, // <-- Utilisation du fichier externe
   addRecipe: (recipe) => set((state) => ({
     recipes: [...state.recipes, { ...recipe, id: Date.now().toString() }]
   })),
