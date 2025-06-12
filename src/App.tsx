@@ -52,15 +52,10 @@ const DarkModeToggle = () => {
   return (
     <button
       onClick={toggleDark}
-      style={{
-        position: "fixed",
-        top: 16,
-        right: 16,
-        zIndex: 1000,
-        padding: "8px 12px",
-      }}
+      className="fixed bottom-4 right-4 sm:top-4 sm:right-4 z-50 bg-background/80 border border-border rounded-full shadow-lg p-3 transition-colors"
+      aria-label="Changer le mode sombre"
     >
-      {dark ? "☀️ Light" : "🌙 Dark"}
+      {dark ? "☀️" : "🌙"}
     </button>
   );
 };
